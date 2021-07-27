@@ -1,0 +1,7 @@
+<powershell>
+New-Item -Path c:\temp -ItemType "directory" -Force
+.exe -Command Add-WindowsFeature -Name Web-App-Dev -IncludeAllSubFeature
+powershell.exe -Command Add-WindowsFeature -Name Web-Mgmt-Tools
+powershell.exe -Command Read-S3Object -BucketName aws-codedeploy-us-west-2/latest -Key codedeploy-agent.msi -File c:\temp\codedeploy-agent.msi
+Start-Process -Wait -FilePath c:\temp\codedeploy-agent.msi -WindowStyle Hidden
+</powershell>
