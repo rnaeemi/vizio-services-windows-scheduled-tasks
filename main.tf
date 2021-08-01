@@ -63,6 +63,37 @@ module "Cleanup_IIS_LogFiles" {
 }
 
 
+module "Cleanup_MongoDB_LogFiles" {
+  source = "./modules/task"
+
+  name            = "Cleanup_MongoDB_LogFiles"
+  script_filename = "Cleanup-MongoDB-LogFiles.ps1"
+  task_path       = "\\${var.org_name}\\"
+  admin_username  = var.admin_username
+  admin_password  = var.admin_password
+  list_of_winservers = [
+    # Mongo-A-1 (ip-0A746442)
+    "ip-0A746442.seadata.vizio.com",
+
+    # Mongo-A-2 (ip-0A74643F)
+    "ip-0A74643F.seadata.vizio.com",
+
+    # Mongo-A-4 (ip-0A740A83)
+    "ip-0A740A83.seadata.vizio.com",
+
+    # Mongo-C-3 (ip-0A740A8C)
+    "ip-0A740A8C.seadata.vizio.com",
+
+    # Mongo-C-5 (ip-0A7464FC)
+    "ip-0A7464FC.seadata.vizio.com"
+
+  ]
+  action_execute   = "powershell.exe"
+  action_arguments = "-ExecutionPolicy Bypass -File \"C:\\terraform_managed\\scripts\\Cleanup_MongoDB_LogFiles\\Cleanup-MongoDB-LogFiles.ps1\""
+}
+
+
+
 module "Cleanup_LogFiles" {
   source = "./modules/task"
 

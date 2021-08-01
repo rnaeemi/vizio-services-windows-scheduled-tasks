@@ -8,7 +8,7 @@ resource null_resource scheduled_task {
     utilities_scripts_New-ScheduledTask_ps1_content = filesha512("utilities/scripts/New-ScheduledTask.ps1")
     utilities_scripts_Closed-Handles_ps1_content    = filesha512("utilities/scripts/Close-Handles.ps1")
 
-    utilities_Handle_Eula_txt_content     = filesha512("utilities/Handle/Eula.txt")
+    # utilities_Handle_Eula_txt_content     = filesha512("utilities/Handle/Eula.txt")
     utilities_Handle_handle_exe_content   = filesha512("utilities/Handle/handle.exe")
     utilities_Handle_handle64_exe_content = filesha512("utilities/Handle/handle64.exe")
   }
